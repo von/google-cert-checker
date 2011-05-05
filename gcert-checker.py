@@ -97,7 +97,11 @@ def main(argv=None):
     
     query_host = "{}.certs.googlednstest.com".format(digest_string)
     output.debug("Query is for {}".format(query_host))
-    answer = resolver.query(query_host, "TXT")
+    try:
+        answer = resolver.query(query_host, "TXT")
+    except resolver.NXDOMAIN as e:
+        output.info("No information found.")
+        return(1)
     for rdata in answer:
         output.debug("Raw response is {}".format(rdata))
         # Convert to string and remove quotes
