@@ -3,7 +3,7 @@
 
 See: http://googleonlinesecurity.blogspot.com/2011/04/improving-ssl-certificate-security.html
 
-Requires dnspython: http://www.dnspython.org/
+Requires dnspython: http://www.dnspython.org/: pip install dnspython
 """
 
 import argparse
