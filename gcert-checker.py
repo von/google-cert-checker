@@ -87,10 +87,12 @@ def main(argv=None):
         cert = ssl.get_server_certificate((hostname, int(port)))
         output.debug("Got certificate, hashing...")
         digest_string = cert_PEM_to_hash(cert)
+        output.debug("Hash is {}".format(digest_string))
     elif args.cert_file:
         with open(args.cert_file) as f:
             lines = f.readlines()
         digest_string = cert_PEM_to_hash("".join(lines))
+        output.debug("Hash is {}".format(digest_string))
     else:
         output.error("Certificate argument required.")
         return(1)
